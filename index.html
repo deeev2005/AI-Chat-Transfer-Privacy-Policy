@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy — AI Chat Transfer</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #0a0a0f;
+      --surface:   #111118;
+      --border:    #1e1e2e;
+      --accent:    #6c63ff;
+      --accent-dim:#3d3880;
+      --text:      #e8e8f0;
+      --muted:     #8888a8;
+      --safe:      #10b981;
+      --warn:      #f59e0b;
+      --radius:    12px;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      font-size: 15px;
+      line-height: 1.75;
+      min-height: 100vh;
+    }
+
+    /* ---- top bar ---- */
+    header {
+      border-bottom: 1px solid var(--border);
+      padding: 28px 0 24px;
+      text-align: center;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(108, 99, 255, 0.12);
+      border: 1px solid rgba(108, 99, 255, 0.3);
+      border-radius: 100px;
+      padding: 5px 14px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+
+    .badge::before {
+      content: '';
+      display: block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--safe);
+      box-shadow: 0 0 8px var(--safe);
+    }
+
+    h1 {
+      font-size: clamp(24px, 4vw, 36px);
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      color: #fff;
+    }
+
+    .tagline {
+      color: var(--muted);
+      margin-top: 8px;
+      font-size: 14px;
+    }
+
+    /* ---- layout ---- */
+    .wrapper {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 24px 80px;
+    }
+
+    /* ---- TL;DR card ---- */
+    .tldr {
+      margin: 40px 0 48px;
+      background: linear-gradient(135deg, rgba(108,99,255,0.08), rgba(16,185,129,0.06));
+      border: 1px solid rgba(108,99,255,0.25);
+      border-radius: var(--radius);
+      padding: 28px 32px;
+    }
+
+    .tldr-heading {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+
+    .tldr-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 14px;
+    }
+
+    .tldr-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 13px;
+      color: var(--text);
+    }
+
+    .tldr-item .dot {
+      flex-shrink: 0;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: rgba(16,185,129,0.15);
+      border: 1px solid rgba(16,185,129,0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 9px;
+      margin-top: 2px;
+    }
+
+    /* ---- sections ---- */
+    .section {
+      margin-bottom: 48px;
+    }
+
+    .section-label {
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      font-size: 20px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 16px;
+      letter-spacing: -0.2px;
+    }
+
+    p {
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    p:last-child { margin-bottom: 0; }
+
+    /* ---- highlight boxes ---- */
+    .highlight {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      border-radius: var(--radius);
+      padding: 20px 24px;
+      margin: 20px 0;
+    }
+
+    .highlight.safe { border-left-color: var(--safe); }
+    .highlight.warn { border-left-color: var(--warn); }
+
+    .highlight p { margin-bottom: 10px; }
+
+    /* ---- data table ---- */
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+      margin: 20px 0;
+    }
+
+    .data-table th {
+      text-align: left;
+      padding: 10px 16px;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--muted);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .data-table td {
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--border);
+      color: var(--muted);
+      vertical-align: top;
+    }
+
+    .data-table td:first-child {
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 600;
+    }
+
+    .tag.local {
+      background: rgba(16,185,129,0.12);
+      color: var(--safe);
+      border: 1px solid rgba(16,185,129,0.25);
+    }
+
+    .tag.no {
+      background: rgba(239,68,68,0.10);
+      color: #f87171;
+      border: 1px solid rgba(239,68,68,0.2);
+    }
+
+    /* ---- divider ---- */
+    hr {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 48px 0;
+    }
+
+    /* ---- footer ---- */
+    footer {
+      text-align: center;
+      padding: 32px 24px;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a { color: var(--accent); }
+
+    @media (max-width: 540px) {
+      .tldr-grid { grid-template-columns: 1fr; }
+      .data-table { font-size: 12px; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="badge">Privacy Policy</div>
+  <h1>AI Chat Transfer</h1>
+  <p class="tagline">Last updated: June 2025 &nbsp;·&nbsp; Effective immediately upon installation</p>
+</header>
+
+<div class="wrapper">
+
+  <!-- TL;DR -->
+  <div class="tldr">
+    <div class="tldr-heading">The short version</div>
+    <div class="tldr-grid">
+      <div class="tldr-item"><span class="dot">✓</span> All data stays on your device — no servers, ever</div>
+      <div class="tldr-item"><span class="dot">✓</span> No accounts, no sign-up, no tracking</div>
+      <div class="tldr-item"><span class="dot">✓</span> No data sold or shared with anyone</div>
+      <div class="tldr-item"><span class="dot">✓</span> You can delete everything at any time</div>
+    </div>
+  </div>
+
+  <!-- 1 -->
+  <div class="section">
+    <div class="section-label">01</div>
+    <h2>What this extension does</h2>
+    <p>AI Chat Transfer is a browser extension that lets you save conversations from AI platforms — ChatGPT, Claude, Gemini, Perplexity, DeepSeek, and Grok — and resume or continue them on a different platform. All of this happens locally inside your browser with no cloud backend of any kind.</p>
+  </div>
+
+  <!-- 2 -->
+  <div class="section">
+    <div class="section-label">02</div>
+    <h2>What data we collect</h2>
+    <p>We collect nothing. The extension does not transmit any data to any server controlled by us or any third party.</p>
+    <p>The only data that exists is what you choose to save, and it is stored exclusively in your browser's local storage (<code>chrome.storage.local</code>).</p>
+
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Data type</th>
+          <th>Where it lives</th>
+          <th>Leaves your device?</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Saved chat messages</td>
+          <td>Browser local storage</td>
+          <td><span class="tag no">Never</span></td>
+        </tr>
+        <tr>
+          <td>Chat titles &amp; timestamps</td>
+          <td>Browser local storage</td>
+          <td><span class="tag no">Never</span></td>
+        </tr>
+        <tr>
+          <td>Source platform &amp; URL</td>
+          <td>Browser local storage</td>
+          <td><span class="tag no">Never</span></td>
+        </tr>
+        <tr>
+          <td>Your identity / email</td>
+          <td>Not collected</td>
+          <td><span class="tag no">Never</span></td>
+        </tr>
+        <tr>
+          <td>Browsing history</td>
+          <td>Not collected</td>
+          <td><span class="tag no">Never</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 3 -->
+  <div class="section">
+    <div class="section-label">03</div>
+    <h2>Why the extension reads AI chat pages</h2>
+    <p>The extension injects a small content script into the supported AI platforms listed in the manifest. This script does exactly two things:</p>
+
+    <div class="highlight safe">
+      <p><strong style="color:#fff;">Reading:</strong> When you click "Save," the script reads the visible conversation text from the page's DOM (HTML elements) and stores it locally in your browser.</p>
+      <p><strong style="color:#fff;">Writing:</strong> When you choose "Continue here," the script injects the previously saved conversation as a text file into the target platform's file upload so that AI can pick up the conversation context.</p>
+    </div>
+
+  
+  </div>
+
+  <!-- 4 -->
+  <div class="section">
+    <div class="section-label">04</div>
+    <h2>Permissions explained</h2>
+
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Permission</th>
+          <th>Why it is needed</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>storage</code></td>
+          <td>Saves your chats locally in the browser. No data leaves the device.</td>
+        </tr>
+        <tr>
+          <td>Host access to AI platforms</td>
+          <td>Required to read the conversation DOM and inject the floating widget button on supported sites.</td>
+        </tr>
+        <tr>
+          <td><code>notifications</code> (background)</td>
+          <td>Shows brief status messages (e.g. "Chat saved") as Chrome notifications. Optional and local only.</td>
+        </tr>
+        <tr>
+          <td><code>web_accessible_resources</code></td>
+          <td>Allows the floating popup panel (an iframe loading <code>popup.html</code>) to be rendered inside the AI platform pages.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="highlight warn">
+      <p>The extension does <strong style="color:#fff;">not</strong> request access to tabs outside the listed AI platforms, your browsing history, your clipboard beyond what is needed for file injection, or any external API.</p>
+    </div>
+  </div>
+
+  <!-- 5 -->
+  <div class="section">
+    <div class="section-label">05</div>
+    <h2>Third-party sharing</h2>
+    <p>We do not share, sell, rent, license, or otherwise disclose your data to any third party. There are no analytics services, advertising networks, or data brokers integrated into this extension.</p>
+    <p>The extension communicates with no external server, API, or web service of any kind.</p>
+  </div>
+
+  <!-- 6 -->
+  <div class="section">
+    <div class="section-label">06</div>
+    <h2>Deleting your data</h2>
+    <p>You are in full control of your data at all times.</p>
+    <p>To delete individual chats, use the delete (🗑) button inside the extension popup. To wipe all stored data at once, go to <strong style="color:#fff;">Chrome Settings → Privacy and security → Site data → Extensions → AI Chat Transfer → Clear data</strong>, or uninstall the extension, which removes all locally stored data automatically.</p>
+  </div>
+
+  <!-- 7 -->
+  <div class="section">
+    <div class="section-label">07</div>
+    <h2>Children's privacy</h2>
+    <p>This extension is not directed at or intended for use by children under the age of 13 (or the applicable age of digital consent in your jurisdiction). We do not knowingly collect any information from children.</p>
+  </div>
+
+  <!-- 8 -->
+  <div class="section">
+    <div class="section-label">08</div>
+    <h2>Changes to this policy</h2>
+    <p>If this policy changes materially — for example, if a future version of the extension were to add any form of data collection — the new policy will be published here with an updated effective date, and the change will be noted in the Chrome Web Store update description so you are aware before updating.</p>
+  </div>
+
+  <!-- 9 -->
+  <div class="section">
+    <div class="section-label">09</div>
+    <h2>Contact</h2>
+    <p>Questions, concerns, or requests related to privacy can be sent to the developer via the support link on the Chrome Web Store listing page. We will respond within a reasonable time.</p>
+  </div>
+
+</div>
+
+<footer>
+  <p>© 2025 AI Chat Transfer &nbsp;·&nbsp; All data is stored locally on your device &nbsp;·&nbsp; No servers. No tracking. No compromise.</p>
+</footer>
+
+</body>
+</html>
